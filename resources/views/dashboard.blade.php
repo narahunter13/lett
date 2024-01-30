@@ -12,6 +12,7 @@
             <div class="icon">
                 <i class="fas fa-inbox"></i>
             </div>
+            <a href="/surat-masuk" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-12">
@@ -24,6 +25,7 @@
             <div class="icon">
                 <i class="fas fa-envelope-open"></i>
             </div>
+            <a href="/surat-keluar" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 </x-layout>

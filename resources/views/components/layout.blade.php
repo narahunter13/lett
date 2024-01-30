@@ -36,20 +36,20 @@
                         </li>
                         <li class="nav-header">SURAT</li>
                         <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link">
+                            <a href="/surat-masuk" class="nav-link">
                                 <i class="nav-icon fas fa-inbox"></i>
                                 <p>Surat Masuk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/surat-keluar" class="nav-link">
                                 <i class="nav-icon fas fa-envelope-open"></i>
                                 <p>Surat Keluar</p>
                             </a>
                         </li>
                         <li class="nav-header">AKUN</li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/keluar" class="nav-link">
                                 <i class="nav-icon fas fa-right-from-bracket"></i>
                                 <p>Keluar</p>
                             </a>

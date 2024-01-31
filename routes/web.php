@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SuratKeluar\Home as SuratKeluarHome;
+use App\Http\Controllers\SuratMasuk\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
+});
+
+Route::prefix('surat-masuk')->group(function () {
+    Route::get('/', [Home::class, 'index']);
+});
+
+Route::prefix('surat-keluar')->group(function () {
+    Route::get('/', [SuratKeluarHome::class, 'index']);
 });

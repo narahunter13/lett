@@ -29,20 +29,20 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link active">
+                            <a href="/" class="nav-link {{ $title == 'Dashboard' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-house"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-header">SURAT</li>
                         <li class="nav-item">
-                            <a href="/surat-masuk" class="nav-link">
+                            <a href="/surat-masuk" class="nav-link {{ $title == 'Surat Masuk' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-inbox"></i>
                                 <p>Surat Masuk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/surat-keluar" class="nav-link">
+                            <a href="/surat-keluar" class="nav-link {{ $title == 'Surat Keluar' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-envelope-open"></i>
                                 <p>Surat Keluar</p>
                             </a>
@@ -80,13 +80,14 @@
         </div>
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2024 <a href="https://lubuklinggaukota.bps.go.id/">BPS Kota Lubuk Linggau</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                <b>Version</b> 1.0.0
             </div>
         </footer>
     </div>
+    {{ $script ?? '' }}
 </body>
 
 </html>

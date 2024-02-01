@@ -1,6 +1,6 @@
 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-    <div class="p-3 mr-4 text-{{ $color }}-500 bg-{{ $color }}-100 rounded-full dark:text-{{ $color }}-100 dark:bg-{{ $color }}-500">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <div {{ $attributes }}>
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             {{ $slot }}
         </svg>
     </div>

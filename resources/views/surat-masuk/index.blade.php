@@ -1,6 +1,6 @@
-<x-layout>
+<x-layouts.app>
     <x-slot:title>
         Surat Masuk
     </x-slot:title>
     Test
-</x-layout>
+</x-layouts.app>

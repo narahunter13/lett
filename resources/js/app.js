@@ -1,7 +1,8 @@
 import './bootstrap';
-import Alpine from 'alpinejs'
 import data from './init-alpine.js'
+
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
  
-window.Alpine = Alpine
 Alpine.data('data', data)
-Alpine.start()
+ 
+Livewire.start()

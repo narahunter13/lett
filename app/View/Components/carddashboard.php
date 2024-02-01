@@ -6,13 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CardDashboard extends Component
+class carddashboard extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $color,
         public int $total,
         public string $title
     ){}
@@ -22,6 +21,6 @@ class CardDashboard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card-dashboard');
+        return view('components.carddashboard');
     }
 }

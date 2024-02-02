@@ -10,6 +10,10 @@
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 
+<style>
+    [x-cloak] { display: none !important; }
+</style>
+
 <body :class="{ 'theme-dark': dark }" x-data="data">
     <div class="flex h-screen bg-gray-100 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <x-sidebar/>

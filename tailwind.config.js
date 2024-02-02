@@ -3,7 +3,8 @@ export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.vue"
+    "./resources/**/*.vue",
+    './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
   ],
   theme: {
     extend: {},

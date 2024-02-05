@@ -16,6 +16,6 @@ class KodeArsipModel extends Model
 
     public function suratKeluar(): HasOne
     {
-        return $this->hasOne(SuratKeluarModel::class, 'nomor_surat_id');
+        return $this->hasOne(SuratKeluarModel::class, 'kode_arsip_id');
     }
 }

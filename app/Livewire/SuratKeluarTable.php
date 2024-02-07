@@ -14,20 +14,28 @@ class SuratKeluarTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setConfigurableAreas([
+            'toolbar-left-start' => './components/buat-surat-keluar-button',
+          ]);
     }
 
     public function columns(): array
     {
         return [
-            Column::make("Nomor surat", "nomor_surat_id")
+            Column::make("Nomor Surat", "nomor_surat_id")
                 ->sortable()
                 ->format(
                     fn($value, $row, Column $column) => '<div class="text-center">' . $row->nomor . $row->abjad . '</div>'
                 )
                 ->html(),
-            Column::make("Alamat surat", "alamat_surat")
+            Column::make("Alamat Surat", "alamat_surat")
                 ->sortable(),
-            Column::make("Nama penyusun", "nama_penyusun")
+            Column::make("Tanggal", "nomorSurat.tanggal")
+                ->format(
+                    fn($value, $row, Column $column) => date('d-m-Y',$value)
+                )
+                ->sortable(),
+            Column::make("Nama Penyusun", "nama_penyusun")
                 ->sortable(),
             Column::make("Isi", "isi")
                 ->sortable()
@@ -43,6 +51,6 @@ class SuratKeluarTable extends DataTableComponent
     {
         return SuratKeluarModel::query()
             ->join('nomor_surat', 'nomor_surat_id', 'nomor_surat.id')
-            ->select('nomor_surat.nomor as nomor', 'nomor_surat.abjad as abjad');
+            ->select('nomor_surat.nomor as nomor', 'nomor_surat.abjad as abjad', 'nomor_surat.tanggal as tanggal');
     }
 }

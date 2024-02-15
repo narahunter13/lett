@@ -4,7 +4,7 @@
 
         <div x-cloak x-show="modelOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl">
             <div class="flex items-center justify-between space-x-4">
-                <h1 class="text-xl font-medium text-gray-800 ">Tambah Surat Keluar</h1>
+                <h1 class="text-xl font-medium text-gray-800 ">Tambah Surat Masuk</h1>
 
                 <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -14,23 +14,15 @@
             </div>
 
             <p class="mt-2 text-sm text-gray-500 ">
-                Silahkan isikan surat keluar
+                Silahkan isikan surat masuk
             </p>
 
-            <form wire:submit="addSuratKeluar" class="mt-5">
+            <form wire:submit="addSuratMasuk" class="mt-5">
                 <div>
-                    <label for="alamat" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Alamat Surat</label>
-                    <input wire:model="alamatSurat" placeholder="Alamat" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    <label for="nomor_tanggal_surat" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Nomor Tanggal Surat</label>
+                    <input wire:model="nomorTanggalSurat" placeholder="Nomor Tanggal Surat" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <div class="text-sm italic">
-                        @error('alamatSurat') <span class="text-red-500">{{ $message }}</span> @enderror
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <label for="isi" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Isi Surat</label>
-                    <input wire:model="isiSurat" placeholder="Isi Surat" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                    <div class="text-sm italic">
-                        @error('isiSurat') <span class="text-red-500">{{ $message }}</span> @enderror
+                        @error('nomorTanggalSurat') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
@@ -44,35 +36,26 @@
                 </div>
 
                 <div class="mt-4">
-                    <label for="penyusun" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Nama Penyusun</label>
-                    <input wire:model="namaPenyusun" placeholder="Penyusun" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                    <label for="pengirim" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Nama Pengirim</label>
+                    <input wire:model="namaPengirim" placeholder="Nama Pengirim" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <div class="text-sm italic">
-                        @error('namaPenyusun') <span class="text-red-500">{{ $message }}</span> @enderror
+                        @error('namaPengirim') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
                 <div class="mt-4">
-                    <label for="arsip" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Kode Surat</label>
-                    <select wire:model="kodeSurat" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        <option value="" selected>Pilih Kode Surat...</option>
-                        <option value="1">16740</option>
-                        <option value="2">16741</option>
-                    </select>
+                    <label for="penerima" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Nama Penerima</label>
+                    <input wire:model="namaPenerima" placeholder="Nama Penerima" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <div class="text-sm italic">
-                        @error('kodeSurat') <span class="text-red-500">{{ $message }}</span> @enderror
+                        @error('namaPenerima') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
                 <div class="mt-4">
-                    <label for="surat" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Kode Arsip</label>
-                    <select wire:model="kodeArsip" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                        <option value="" selected>Pilih Kode Arsip...</option>
-                        @foreach($kodeArsipList as $row)
-                        <option value="{{ $row->id }}">{{ $row->kode . '-' . $row->nama }}</option>
-                        @endforeach
-                    </select>
+                    <label for="isi" class="block text-sm text-gray-700 capitalize dark:text-gray-200">Isi Surat</label>
+                    <input wire:model="isiSurat" placeholder="Isi Surat" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                     <div class="text-sm italic">
-                        @error('kodeArsip') <span class="text-red-500">{{ $message }}</span> @enderror
+                        @error('isiSurat') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
@@ -93,7 +76,7 @@
 
 @script
 <script>
-    $wire.on('tambah-surat-keluar', () => {
+    $wire.on('tambah-surat-masuk', () => {
         Swal.fire({
             title: 'Berhasil!',
             text: 'Surat telah ditambahkan',

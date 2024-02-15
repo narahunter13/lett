@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('surat_keluar', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nomor_surat_id');
+            // $table->unsignedBigInteger('nomor_surat_id');
             $table->string('alamat_surat');
             $table->string('nama_penyusun');
             $table->string('isi');
@@ -21,9 +21,14 @@ return new class extends Migration
             $table->unsignedBigInteger('kode_surat_id');
             $table->timestamps();
 
-            $table->foreign('nomor_surat_id')->references('id')->on('nomor_surat');
+            // $table->foreign('nomor_surat_id')->references('id')->on('nomor_surat');
             $table->foreign('kode_surat_id')->references('id')->on('kode_surat');
             $table->foreign('kode_arsip_id')->references('id')->on('kode_arsip');
+
+            $table->foreignId('nomor_surat_id')
+                ->constrained(table: 'nomor_surat', indexName: 'nomor_keluar_id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

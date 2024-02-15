@@ -21,7 +21,7 @@ class NomorSuratSeeder extends Seeder
                 DB::table('nomor_surat')->insert([
                     'nomor' => $data[0],
                     'abjad' => $data[1] ?? NULL,
-                    'tanggal' => $data[2],
+                    'tanggal' => strtotime($data[2]),
                 ]);
             }
             $transRow = false;

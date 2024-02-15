@@ -2,20 +2,26 @@
 
 namespace App\Livewire;
 
-use App\Models\KodeArsipModel;
 use App\Models\NomorSuratModel;
-use App\Models\SuratKeluarModel;
+use App\Models\SuratMasukModel;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class BuatSuratKeluar extends Component
+class BuatSuratMasuk extends Component
 {
-    public $kodeArsipList = [];
     public $nomorSurat;
 
-    #[Validate('required', message: 'Anda Harus Masukkan Alamat!')]
-    #[Validate('min:5', message: 'Alamat Minimal 5 Karakter!')]
-    public $alamatSurat;
+    #[Validate('required', message: 'Anda Harus Masukkan Nomor Tanggal Surat!')]
+    #[Validate('min:5', message: 'Nomor Tanggal Surat Minimal 5 Karakter!')]
+    public $nomorTanggalSurat;
+
+    #[Validate('required', message: 'Anda Harus Masukkan Nama Pengirim!')]
+    #[Validate('min:4', message: 'Nama Pengirim Minimal 4 Karakter!')]
+    public $namaPengirim;
+
+    #[Validate('required', message: 'Anda Harus Masukkan Nama Penerima!')]
+    #[Validate('min:4', message: 'Nama Penerima Minimal 4 Karakter!')]
+    public $namaPenerima;
 
     #[Validate('required', message: 'Anda Harus Masukkan Isi Surat!')]
     #[Validate('min:5', message: 'Isi Surat Minimal 5 Karakter!')]
@@ -23,39 +29,23 @@ class BuatSuratKeluar extends Component
 
     public $tanggalSurat;
 
-    #[Validate('required', message: 'Anda Harus Masukkan Nama Penyusun!')]
-    #[Validate('min:4', message: 'Nama Penyusun Minimal 4 Karakter!')]
-    public $namaPenyusun;
-
-    #[Validate('required', message: 'Anda Harus Memilih Kode Surat!')]
-    public $kodeSurat;
-
-    #[Validate('required', message: 'Anda Harus Memilih Kode Arsip!')]
-    public $kodeArsip;
-
-    public function mount()
-    {
-        $this->kodeArsipList = KodeArsipModel::all();
-    }
-
-    public function addSuratKeluar()
+    public function addSuratMasuk()
     {
         $this->validate();
         $this->nomorSurat =  NomorSuratModel::create($this->addNomorSurat());
-        
-        SuratKeluarModel::create([
+
+        SuratMasukModel::create([
             'nomor_surat_id' => $this->nomorSurat->id,
-            'alamat_surat' => $this->alamatSurat,
-            'nama_penyusun' => $this->namaPenyusun,
+            'nomor_tanggal_surat' => $this->nomorTanggalSurat,
+            'nama_pengirim' => $this->namaPengirim,
+            'nama_penerima' => $this->namaPenerima,
             'isi' => $this->isiSurat,
-            'kode_arsip_id' => $this->kodeArsip,
-            'kode_surat_id' => $this->kodeSurat,
         ]);
 
-        $this->resetExcept('kodeArsipList');
+        $this->reset();
 
         $this->dispatch('refresh-table');
-        $this->dispatch('tambah-surat-keluar');
+        $this->dispatch('tambah-surat-masuk');
     }
 
     private function addNomorSurat()
@@ -83,7 +73,7 @@ class BuatSuratKeluar extends Component
                 ->first();
             $nomor = $nomorSurat->nomor;
             $abjad = $nomorSurat->abjad;
-            
+
             if ($abjad == '') {
                 $abjad = 'a';
             } else {
@@ -100,6 +90,6 @@ class BuatSuratKeluar extends Component
 
     public function render()
     {
-        return view('livewire.buat-surat-keluar');
+        return view('livewire.buat-surat-masuk');
     }
 }

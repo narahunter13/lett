@@ -18,4 +18,9 @@ class NomorSuratModel extends Model
     {
         return $this->hasOne(SuratKeluarModel::class, 'nomor_surat_id');
     }
+
+    public function suratmasuk(): HasOne
+    {
+        return $this->hasOne(SuratMasukModel::class, 'nomor_surat_id');
+    }
 }
